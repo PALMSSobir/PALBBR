@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DevExpress.ExpressApp.Dashboards.Web.v17.1</name>
+    </assembly>
+    <members>
+        <member name="T:DevExpress.ExpressApp.Dashboards.Web.DashboardsAspNetModule">
+
+            <summary>
+                <para>The module contained in the <i>DevExpress.ExpressApp.Dashboards.Web.v17.1.dll</i> assembly.
+</para>
+            </summary>
+
+        </member>
+        <member name="M:DevExpress.ExpressApp.Dashboards.Web.DashboardsAspNetModule.#ctor">
+            <summary>
+                <para>Creates an instance of the DashboardsAspNetModule class.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="M:DevExpress.ExpressApp.Dashboards.Web.DashboardsAspNetModule.CustomizeTypesInfo(DevExpress.ExpressApp.DC.ITypesInfo)">
+            <summary>
+                <para>Customizes metadata on business classes specific to the DashboardsAspNetModule before loading the metadata to the Application Model's <b>BOModel</b> node.
+</para>
+            </summary>
+            <param name="typesInfo">
+		An <see cref="T:DevExpress.ExpressApp.DC.ITypesInfo"/> object which holds metadata information on business classes to be loaded to the Application Model. 
+
+            </param>
+
+
+        </member>
+        <member name="P:DevExpress.ExpressApp.Dashboards.Web.DashboardsAspNetModule.DataSourceStorage">
+            <summary>
+                <para>For internal use.
+</para>
+            </summary>
+            <value> 
+</value>
+
+
+        </member>
+        <member name="M:DevExpress.ExpressApp.Dashboards.Web.DashboardsAspNetModule.GetXafResourceLocalizerTypes">
+            <summary>
+                <para>Returns a collection of additional Resource Localizer types that can be used in an application that uses the DashboardsAspNetModule.
+</para>
+            </summary>
+            <returns>An <b>ICollection&lt;Type&gt;</b> collection containing the types of the Resource Localizers supplied with the DashboardsAspNetModule.
+</returns>
+
+
+        </member>
+        <member name="M:DevExpress.ExpressApp.Dashboards.Web.DashboardsAspNetModule.Setup(DevExpress.ExpressApp.XafApplication)">
+            <summary>
+                <para>Sets up the DashboardsAspNetModule after it has been added to the <see cref="P:DevExpress.ExpressApp.XafApplication.Modules"/> collection.
+</para>
+            </summary>
+            <param name="application">
+		An <see cref="T:DevExpress.ExpressApp.XafApplication"/> object that provides methods and properties to manage the current application.
+
+            </param>
+
+
+        </member>
+        <member name="T:DevExpress.ExpressApp.Dashboards.Web.WebDashboardViewerViewItem">
+
+            <summary>
+                <para>A View Item that displays the <see cref="T:DevExpress.DashboardWeb.ASPxDashboard"/> control.
+</para>
+            </summary>
+
+        </member>
+        <member name="M:DevExpress.ExpressApp.Dashboards.Web.WebDashboardViewerViewItem.#ctor(System.String,System.Type)">
+            <summary>
+                <para>Creates a new instance of the WebDashboardViewerViewItem class.
+</para>
+            </summary>
+            <param name="id">
+		A <see cref="T:System.Type"/> object specifying the type of object for which the current View Item's View is created.
+
+            </param>
+            <param name="objectType">
+		A string specifying the identifier of the View Item. 
+
+            </param>
+
+
+        </member>
+        <member name="P:DevExpress.ExpressApp.Dashboards.Web.WebDashboardViewerViewItem.DashboardControl">
+            <summary>
+                <para>Gets the <see cref="T:DevExpress.DashboardWeb.ASPxDashboard"/> control used by the Dashboards Module to display and modify dashboards in ASP.NET applications.
+</para>
+            </summary>
+            <value>An <see cref="T:DevExpress.DashboardWeb.ASPxDashboard"/> control.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.ExpressApp.Dashboards.Web.WebDashboardViewerViewItem.DashboardDesigner">
+            <summary>
+                <para>For internal use.
+</para>
+            </summary>
+            <value> 
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.ExpressApp.Dashboards.Web.WebDashboardViewerViewItem.HasDashboardParameters">
+            <summary>
+                <para>Gets a value indicating whether or not the currently displayed dashboard has parameters.
+</para>
+            </summary>
+            <value><b>true</b>, if the dashboard has parameters; otherwise, <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.ExpressApp.Dashboards.Web.WebDashboardViewerViewItem.IsDashboardExportAllowed">
+            <summary>
+                <para>Gets a value indicating whether or not the user is allowed to export the currently displayed dashboard.
+</para>
+            </summary>
+            <value><b>true</b>, if the user is allowed to export the currently displayed dashboard; otherwise, <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="M:DevExpress.ExpressApp.Dashboards.Web.WebDashboardViewerViewItem.Setup(DevExpress.ExpressApp.IObjectSpace,DevExpress.ExpressApp.XafApplication)">
+            <summary>
+                <para>Passes the <see cref="T:DevExpress.ExpressApp.XafApplication"/> and <see cref="T:DevExpress.ExpressApp.IObjectSpace"/> objects to the current WebDashboardViewerViewItem.
+</para>
+            </summary>
+            <param name="objectSpace">
+		An <see cref="T:DevExpress.ExpressApp.IObjectSpace"/> object that provides methods to access the application database.
+
+            </param>
+            <param name="application">
+		An <see cref="T:DevExpress.ExpressApp.XafApplication"/> object that manages the current application.
+
+            </param>
+
+
+        </member>
+    </members>
+</doc>

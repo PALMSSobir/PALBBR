@@ -1,0 +1,69 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+    xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors">
+
+    <system:Double x:Key="DefaultWidth">1280</system:Double>
+
+    <system:Double x:Key="DefaultHeight">720</system:Double>
+
+    <Thickness x:Key="LightRightMargin">0,0,15,0</Thickness>
+    <Thickness x:Key="RightMargin">0,0,30,0</Thickness>
+    <Thickness x:Key="ContentMargin">30,20</Thickness>
+    <Thickness x:Key="TopBottomContentMargin">0,20</Thickness>
+    <Thickness x:Key="LeftRightContentMargin">30,0</Thickness>
+    <Thickness x:Key="LightContentMargin">15,10</Thickness>
+    <Thickness x:Key="LeftButtonMargin">10,0,0,0</Thickness>
+
+    <!-- converters -->
+    <dxmvvm:BooleanNegationConverter x:Key="BooleanNegationConverter"/>
+    <dxmvvm:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+
+    <!-- themes -->
+
+    <Style x:Key="POSButton" TargetType="Button">
+        <Setter Property="Height" Value="40" />
+        <Setter Property="Padding" Value="3" />
+        <Setter Property="FontSize" Value="25" />
+    </Style>
+
+    <Style x:Key="NumberButton" TargetType="Button">
+        <Setter Property="Margin" Value="5,2,5,2" />
+        <Setter Property="FontSize" Value="30" />
+    </Style>
+
+    <Style x:Key="POSTextBlock" TargetType="TextBlock">
+        <Setter Property="Margin" Value="0,5,0,0" />
+        <Setter Property="TextAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="15" />
+    </Style>
+
+    <Style x:Key="POSTextBox" TargetType="TextBox">
+        <Setter Property="Height" Value="35" />
+        <Setter Property="TextAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="25" />
+        <Setter Property="FontWeight" Value="DemiBold" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Margin" Value="10,0" />
+    </Style>
+
+    <Style x:Key="ClientListButton" TargetType="Button">
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="Padding" Value="7" />
+        <Setter Property="MinHeight" Value="60" />
+        <Setter Property="MinWidth" Value="100" />
+        <Setter Property="MaxHeight" Value="60" />
+        <Setter Property="MaxWidth" Value="100" />
+        <Setter Property="FontStretch" Value="Expanded" />
+        <Setter Property="AllowDrop" Value="True" />
+    </Style>
+
+    <Style x:Key="MainWindowTopButton" TargetType="Button">
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="Padding" Value="3" />
+        <Setter Property="Width" Value="70" />
+    </Style>
+
+</ResourceDictionary>
