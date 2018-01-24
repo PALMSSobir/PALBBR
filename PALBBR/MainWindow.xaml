@@ -20,7 +20,7 @@
             <RowDefinition Height="0.3*" />
             <RowDefinition Height="10"/>
             <RowDefinition Height="*" />
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -47,29 +47,46 @@
                  Background="CadetBlue"
                  Margin="3"
                  Padding="5"
-                 ItemsSource="{Binding LinenLists}"
+                 ItemsSource="{Binding Lines}"
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <DockPanel LastChildFill="False">
-                        <StackPanel DockPanel.Dock="Top" Margin="1,5,0,0" Orientation="Vertical">
-                            <TextBox />
+                        <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Name}" 
+                                 Width="160"
+                                 Height="30"
+                                 Padding="7,0,0,0"
+                                 FontSize="15"
+                                 Margin="0,3"/>
+
                         <dxe:SpinEdit Increment="1"
                                       MinValue="0"
+                                      Width="50"
+                                      Height="30"
+                                      Margin="50,0,0,0"
                                       AllowSpinOnMouseWheel="False"
                                       MaskType="Numeric"
                                       Mask="d"
-                                      Value="{Binding Quantity}"
+                                      FontSize="20"
+                                      Value="{Binding Qty}"
+                                      HorizontalContentAlignment="Center"
                                       MaskUseAsDisplayFormat="True"/>
+                            <Button 
+                                Width="40" 
+                                Content="+"
+                                Command="{Binding Increase}"/>
+                            <Button 
+                                Width="40" 
+                                Content="-"
+                                Command="{Binding Decrease}"/>
                         </StackPanel>
-                    </DockPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
-            <ListBox.ItemsPanel>
+            <!--<ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <WrapPanel IsItemsHost="True" />
+                    <WrapPanel IsItemsHost="True" />a
                 </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
+            </ListBox.ItemsPanel>-->
         </ListBox>
 
         <!--  1 Панел кнопок ввода данных  -->
@@ -87,73 +104,83 @@
             </Grid.RowDefinitions>
 
             <Button
-                    Name="Number1Click"
                     Grid.Row="0"
                     Grid.Column="0"
                     Content="1"
+                    Command="{Binding NumberCommand}"
+                    CommandParameter="1"
                     Style="{StaticResource NumberButton}" />
             <Button
-                    Name="Number2Click"
+                    Command="{Binding NumberCommand}"
+                    CommandParameter="2"
                     Grid.Row="0"
                     Grid.Column="1"
                     Content="2"
                     Style="{StaticResource NumberButton}" />
             <Button
-                    Name="Number3Click"
+                    Command="{Binding NumberCommand}"
+                    CommandParameter="3"
                     Grid.Row="0"
                     Grid.Column="2"
                     Content="3"
                     Style="{StaticResource NumberButton}" />
             <Button
-                    Name="Number4Click"
+                    Command="{Binding NumberCommand}"
+                    CommandParameter="4"
                     Grid.Row="1"
                     Grid.Column="0"
                     Content="4"
                     Style="{StaticResource NumberButton}" />
             <Button
-                    Name="Number5Click"
+                    Command="{Binding NumberCommand}"
+                    CommandParameter="5"
                     Grid.Row="1"
                     Grid.Column="1"
                     Content="5"
                     Style="{StaticResource NumberButton}" />
             <Button
-                    Name="Number6Click"
+                    Command="{Binding NumberCommand}"
+                    CommandParameter="6"
                     Grid.Row="1"
                     Grid.Column="2"
                     Content="6"
                     Style="{StaticResource NumberButton}" />
             <Button
-                    Name="Number7Click"
                     Grid.Row="2"
                     Grid.Column="0"
                     Content="7"
+                    Command="{Binding NumberCommand}"
+                    CommandParameter="7"
                     Style="{StaticResource NumberButton}" />
             <Button
-                    Name="Number8Click"
+                    Command="{Binding NumberCommand}"
+                    CommandParameter="8"
                     Grid.Row="2"
                     Grid.Column="1"
                     Content="8"
                     Style="{StaticResource NumberButton}" />
             <Button
-                    Name="Number9Click"
+                    Command="{Binding NumberCommand}"
+                    CommandParameter="9"
                     Grid.Row="2"
                     Grid.Column="2"
                     Content="9"
                     Style="{StaticResource NumberButton}" />
             <Button
-                    Name="NumberDelClick"
+                    Command="{Binding DeleteCommand}"
                     Grid.Row="3"
                     Grid.Column="2"
                     Content="Clear"
                     Style="{StaticResource NumberButton}" />
             <Button
-                    Name="Number0Click"
+                    Command="{Binding NumberCommand}"
+                    CommandParameter="0"
                     Grid.Row="3"
                     Grid.Column="1"
                     Content="0"
                     Style="{StaticResource NumberButton}" />
-            <Button
-                Name="Print"
+            <Button 
+                Command="{Binding PrintCommand}"
                 Grid.Row="3"
                 Grid.Column="0"
                 Content="Print"
