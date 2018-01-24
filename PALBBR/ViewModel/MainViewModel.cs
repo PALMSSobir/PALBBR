@@ -39,10 +39,7 @@ namespace PALBBR.ViewModel
 
         private void Add1()
         {
-            if (Qty > 0)
-                Qty = Qty * 10 + 1;
-            else
-                Qty = 1;
+
         }
 
     }

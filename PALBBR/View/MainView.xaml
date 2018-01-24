@@ -45,14 +45,20 @@
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListBox.ItemTemplate>
                 <DataTemplate>
+                    <DockPanel LastChildFill="False">
+                        <StackPanel DockPanel.Dock="Top" Margin="1,5,0,0" Orientation="Vertical">
+                            <TextBlock Margin="0,0,0,5" 
+                                       Text="{Binding LinenName}"/>
 
-                    <dxe:SpinEdit Increment="1"
-                                  MinValue="0"
-                                  AllowSpinOnMouseWheel="False"
-                                  MaskType="Numeric"
-                                  Mask="d"
-                                  Value="{Binding LinenQuantity}"
-                                  MaskUseAsDisplayFormat="True"/>
+                            <dxe:SpinEdit Increment="1"
+                                          MinValue="0"
+                                          AllowSpinOnMouseWheel="False"
+                                          MaskType="Numeric"
+                                          Mask="d"
+                                          Value="{Binding Quantity}"
+                                          MaskUseAsDisplayFormat="True"/>
+                        </StackPanel>
+                    </DockPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
             <ListBox.ItemsPanel>
