@@ -1,4 +1,6 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace PALBBR
 
@@ -9,6 +11,15 @@ namespace PALBBR
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void UIElement_OnGotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            var textbox = sender as TextBox;
+
+            if (textbox == null || !textbox.IsFocused) return;
+
+            ItemsListBox.SelectedItem = null;
         }
     }
 }

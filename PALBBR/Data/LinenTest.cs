@@ -6,7 +6,7 @@ namespace PALBBR.Data
     public class LinenTest : ViewModelBase
     {
         private string _name;
-        private int _qty;
+        private string _qty;
 
         public string Name
         {
@@ -14,7 +14,7 @@ namespace PALBBR.Data
             set => Set(ref _name, value);
         }
 
-        public int Qty
+        public string Qty
         {
             get => _qty;
             set => Set(ref _qty, value);

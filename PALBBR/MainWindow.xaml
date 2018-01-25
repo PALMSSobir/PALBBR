@@ -28,7 +28,8 @@
         </Grid.ColumnDefinitions>
 
         <!-- Логотип -->
-        <Grid Grid.Column="1" Background="Indigo">
+        <Grid Grid.Column="1"  >
+            <Image Source="/icon/logo.png"/>
         </Grid>
 
         <DockPanel Grid.Row="0" Grid.Column="0" LastChildFill="False" >
@@ -37,18 +38,21 @@
                      Padding="5" 
                      FontSize="40" 
                      Width="300"
+                     GotKeyboardFocus="UIElement_OnGotKeyboardFocus"
                      Text="{Binding CustomerNumber}">
 
             </TextBox>
         </DockPanel>
         <!-- Таблица Списока белья -->
-        <ListBox Grid.Row="2" 
+        <ListBox Name="ItemsListBox" 
+                 Grid.Row="2" 
                  Grid.Column="0" 
                  Background="CadetBlue"
                  Margin="3"
                  Padding="5"
                  ItemsSource="{Binding Lines}"
-                 ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                 SelectedItem="null">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                         <StackPanel Orientation="Horizontal">
