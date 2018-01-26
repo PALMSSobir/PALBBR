@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Configuration;
+using System.Data.OleDb;
 using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using PALBBR.Data;
@@ -11,13 +11,14 @@ using PALBBR.Data;
 
 namespace PALBBR.ViewModel
 {
-
     public class MainViewModel : ViewModelBase
     {
         private string _customerNumber;
         private ObservableCollection<LinenTest> _lines;
         private ListBox _itemsListBox;
         private LinenTest _selectedItem;
+
+        private OleDbConnection Conn;
 
         public string CustomerNumber
         {
@@ -45,14 +46,14 @@ namespace PALBBR.ViewModel
             get => _lines;
             set => Set(ref _lines, value);
         }
-
+        public string checkConnection { get; set; }
 
         public MainViewModel()
         {
+            //loadLinen();
 
             NumberCommand = new RelayCommand<object>(x => AddNumber(x));
-            DeleteCommand = new RelayCommand<object>(x => DeleteNumber(x));
-            Increase = new RelayCommand(IncreaseQty);
+            DeleteCommand = new RelayCommand<object>(x => DeleteNumber());
 
             List<LinenTest> items = new List<LinenTest>();
             items.Add(new LinenTest() { Name = "Pillow", Qty = "0"});
@@ -66,13 +67,14 @@ namespace PALBBR.ViewModel
             items.Add(new LinenTest() { Name = "Underwear (2 Nos)", Qty = "3" });
 
             Lines = new ObservableCollection<LinenTest>(items);
-        }
 
-        private void IncreaseQty()
-        {
-            
-        }
 
+            Conn = new OleDbConnection();
+            Conn.ConnectionString = ConfigurationManager.ConnectionStrings["Conection"].ToString();
+            Conn.Open();
+            checkConnection = "est kontakt";
+            Conn.Close();
+        }
         private void AddNumber(object x)
         {
             if(SelectedItem != null)
@@ -82,16 +84,21 @@ namespace PALBBR.ViewModel
             else
             {
                 if (x == null) return;
-
                 CustomerNumber = $"{CustomerNumber}{x}";
             }
-           
         }
 
-        private void DeleteNumber(object x)
+        private void DeleteNumber()
         {
-            if (CustomerNumber == null) return;
-            CustomerNumber = null;
+            if (SelectedItem != null)
+            {
+                SelectedItem.Qty = null;
+            }
+            else
+            {
+                if (CustomerNumber == null) return;
+                CustomerNumber = null;
+            }
         }
     }
 }

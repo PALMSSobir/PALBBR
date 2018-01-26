@@ -29,7 +29,8 @@
 
         <!-- Логотип -->
         <Grid Grid.Column="1"  >
-            <Image Source="/icon/logo.png"/>
+            <!--<Image Source="/icon/logo.png"/>-->
+            <TextBlock Text="{Binding checkConnection}"></TextBlock>
         </Grid>
 
         <DockPanel Grid.Row="0" Grid.Column="0" LastChildFill="False" >
@@ -47,25 +48,26 @@
         <ListBox Name="ItemsListBox" 
                  Grid.Row="2" 
                  Grid.Column="0" 
-                 Background="CadetBlue"
+                 BorderBrush="Black"
                  Margin="3"
                  Padding="5"
                  ItemsSource="{Binding Lines}"
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                 SelectedItem="null">
+                 SelectedItem="{Binding SelectedItem}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Name}" 
-                                 Width="160"
+                        <TextBlock 
+                                Background="WhiteSmoke" 
+                                 Text="{Binding Name}" 
+                                 Width="200"
                                  Height="30"
                                  Padding="7,0,0,0"
-                                 FontSize="15"
+                                 FontSize="19"
                                  Margin="0,3"/>
 
-                        <dxe:SpinEdit Increment="1"
-                                      MinValue="0"
-                                      Width="50"
+                        <dxe:SpinEdit MinValue="0"
+                                      Width="80"
                                       Height="30"
                                       Margin="50,0,0,0"
                                       AllowSpinOnMouseWheel="False"
@@ -75,14 +77,14 @@
                                       Value="{Binding Qty}"
                                       HorizontalContentAlignment="Center"
                                       MaskUseAsDisplayFormat="True"/>
-                            <Button 
+                            <!--<Button 
                                 Width="40" 
                                 Content="+"
                                 Command="{Binding Increase}"/>
                             <Button 
                                 Width="40" 
                                 Content="-"
-                                Command="{Binding Decrease}"/>
+                                Command="{Binding Decrease}"/>-->
                         </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
