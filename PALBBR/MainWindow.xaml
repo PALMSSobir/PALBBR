@@ -30,7 +30,7 @@
         <!-- Логотип -->
         <Grid Grid.Column="1"  >
             <!--<Image Source="/icon/logo.png"/>-->
-            <TextBlock Text="{Binding checkConnection}"></TextBlock>
+            <TextBlock Text="{Binding checkConnection}" Margin="40"></TextBlock>
         </Grid>
 
         <DockPanel Grid.Row="0" Grid.Column="0" LastChildFill="False" >
