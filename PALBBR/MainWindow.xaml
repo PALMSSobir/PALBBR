@@ -17,7 +17,7 @@
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.3*" />
+            <RowDefinition Height="70" />
             <RowDefinition Height="10"/>
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto"/>
@@ -29,16 +29,16 @@
 
         <!-- Логотип -->
         <Grid Grid.Column="1"  >
-            <!--<Image Source="/icon/logo.png"/>-->
-            <TextBlock Text="{Binding checkConnection}" Margin="40"></TextBlock>
+            <Image Source="/icon/logo.png"/>
         </Grid>
 
         <DockPanel Grid.Row="0" Grid.Column="0" LastChildFill="False" >
             <TextBox DockPanel.Dock="Top" 
-                     Margin="5,20" 
-                     Padding="5" 
+                     Margin="5,10" 
+                     Padding="5,0" 
                      FontSize="40" 
                      Width="300"
+                     HorizontalContentAlignment="Center"
                      GotKeyboardFocus="UIElement_OnGotKeyboardFocus"
                      Text="{Binding CustomerNumber}">
 
@@ -51,8 +51,8 @@
                  BorderBrush="Black"
                  Margin="3"
                  Padding="5"
-                 ItemsSource="{Binding Lines}"
-                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                 ItemsSource="{Binding Linens}"
+                 ScrollViewer.HorizontalScrollBarVisibility="Auto"
                  SelectedItem="{Binding SelectedItem}">
             <ListBox.ItemTemplate>
                 <DataTemplate>

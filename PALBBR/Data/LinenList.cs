@@ -3,11 +3,17 @@ using GalaSoft.MvvmLight;
 
 namespace PALBBR.Data
 {
-    public class LinenTest : ViewModelBase
+    public class LinenList : ViewModelBase
     {
+        private string _id;
         private string _name;
         private string _qty;
 
+        public string Id
+        {
+            get => _id;
+            set => Set(ref _id, value);
+        }
         public string Name
         {
             get => _name;
