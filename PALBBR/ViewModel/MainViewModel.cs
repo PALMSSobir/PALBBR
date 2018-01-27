@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Data.OleDb;
+using System.Windows;
 using System.Windows.Controls;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
@@ -37,13 +38,14 @@ namespace PALBBR.ViewModel
 
         public RelayCommand<object> NumberCommand { get; set; }
         public RelayCommand<Object> DeleteCommand { get; set; }
-        public RelayCommand PrintCommand { get; set; }
+        public RelayCommand<LinenList> PrintCommand { get; set; }
 
 
         public MainViewModel()
         {
             NumberCommand = new RelayCommand<object>(x => AddNumber(x));
             DeleteCommand = new RelayCommand<object>(x => DeleteNumber());
+            PrintCommand = new RelayCommand<LinenList>(x=> PrintBill());
 
             List<LinenList> items = new List<LinenList>();
 
@@ -63,12 +65,25 @@ namespace PALBBR.ViewModel
             {
                 item.Name = reader["LinenName"].ToString();
                 item.Id = reader["ID"].ToString();
-                item.Qty = "0";
-                items.Add(item);
+                items.Add(new LinenList(){Id = item.Id, Name = item.Name, Qty = item.Qty});
             }
 
             Conn.Close();
             Linens = new ObservableCollection<LinenList>(items);
+        }
+
+        private void PrintBill()
+        {
+            Conn = new OleDbConnection();
+            Conn.ConnectionString = ConfigurationManager.ConnectionStrings["Conection"].ToString();
+
+            Conn.Open();
+            OleDbCommand command = new OleDbCommand();
+            command.Connection = Conn;
+            string query = "INSERT INTO DeliveryNotes (Client, PrintDate) VALUES('"+ CustomerNumber + "','"+ DateTime.Now+"' )";
+            command.CommandText = query;
+            MessageBox.Show("Data Saved "+ CustomerNumber);
+            Conn.Close();
         }
 
         private void AddNumber(object x)

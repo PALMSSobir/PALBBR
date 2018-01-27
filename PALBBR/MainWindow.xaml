@@ -33,16 +33,20 @@
         </Grid>
 
         <DockPanel Grid.Row="0" Grid.Column="0" LastChildFill="False" >
-            <TextBox DockPanel.Dock="Top" 
-                     Margin="5,10" 
-                     Padding="5,0" 
-                     FontSize="40" 
-                     Width="300"
-                     HorizontalContentAlignment="Center"
-                     GotKeyboardFocus="UIElement_OnGotKeyboardFocus"
-                     Text="{Binding CustomerNumber}">
+            <dxe:SpinEdit DockPanel.Dock="Top" 
+                          Margin="5,10" 
+                          Padding="5,0" 
+                          FontSize="40" 
+                          Width="300"
+                          AllowSpinOnMouseWheel="False"
+                          MaskType="Numeric"
+                          Mask="d"
+                          Value="{Binding CustomerNumber}"
+                          MinValue="0"
+                          HorizontalContentAlignment="Center"
+                          GotKeyboardFocus="UIElement_OnGotKeyboardFocus">
 
-            </TextBox>
+            </dxe:SpinEdit>
         </DockPanel>
         <!-- Таблица Списока белья -->
         <ListBox Name="ItemsListBox" 
@@ -67,6 +71,7 @@
                                  Margin="0,3"/>
 
                         <dxe:SpinEdit MinValue="0"
+                                      MaxValue="99"
                                       Width="80"
                                       Height="30"
                                       Margin="50,0,0,0"
