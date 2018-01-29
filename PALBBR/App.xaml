@@ -13,10 +13,21 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/PALBBR;component/Themes/Styles.xaml"/>
                 <ResourceDictionary Source="/PALBBR;component/Themes/ViewDictionary.xaml"/>
-
                 <ResourceDictionary>
                     <palbbr:ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:PALBBR.ViewModel" />
-                </ResourceDictionary></ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <Style x:Key="ListBoxItemStyle" TargetType="{x:Type ListBoxItem}">
+                <Style.Triggers>
+                    <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                        <Setter Property="Background" Value="WhiteSmoke"></Setter>
+                    </Trigger>
+                    <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                        <Setter Property="Background" Value="White"></Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
+
 </Application>

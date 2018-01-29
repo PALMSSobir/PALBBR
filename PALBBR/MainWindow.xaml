@@ -33,24 +33,22 @@
         </Grid>
 
         <DockPanel Grid.Row="0" Grid.Column="0" LastChildFill="False" >
-            <dxe:SpinEdit DockPanel.Dock="Top" 
+            <TextBox DockPanel.Dock="Top" 
                           Margin="5,10" 
                           Padding="5,0" 
                           FontSize="40" 
                           Width="300"
-                          AllowSpinOnMouseWheel="False"
-                          MaskType="Numeric"
-                          Mask="d"
-                          Value="{Binding CustomerNumber}"
-                          MinValue="0"
+                          Text="{Binding CustomerNumber}"
                           HorizontalContentAlignment="Center"
                           GotKeyboardFocus="UIElement_OnGotKeyboardFocus">
 
-            </dxe:SpinEdit>
+            </TextBox>
         </DockPanel>
         <!-- Таблица Списока белья -->
-        <ListBox Name="ItemsListBox" 
+        <ListView  Name="ItemsListBox" 
                  Grid.Row="2" 
+                 AlternationCount="2"
+                 ItemContainerStyle="{StaticResource ListBoxItemStyle}"
                  Grid.Column="0" 
                  BorderBrush="Black"
                  Margin="3"
@@ -62,7 +60,6 @@
                 <DataTemplate>
                         <StackPanel Orientation="Horizontal">
                         <TextBlock 
-                                Background="WhiteSmoke" 
                                  Text="{Binding Name}" 
                                  Width="200"
                                  Height="30"
@@ -98,7 +95,7 @@
                     <WrapPanel IsItemsHost="True" />a
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>-->
-        </ListBox>
+        </ListView>
 
         <!--  1 Панел кнопок ввода данных  -->
         <Grid Margin="5" Grid.Row="2" Grid.Column="1">
