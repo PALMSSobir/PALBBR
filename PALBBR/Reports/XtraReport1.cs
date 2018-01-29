@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Drawing;
-using System.Collections;
-using System.ComponentModel;
-using DevExpress.XtraReports.UI;
+using System.Collections.Generic;
+using DevExpress.Office.Utils;
 
 namespace PALBBR.Reports
 {
@@ -12,6 +10,6 @@ namespace PALBBR.Reports
         {
             InitializeComponent();
         }
-
     }
+    
 }

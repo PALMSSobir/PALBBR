@@ -5,7 +5,6 @@ using System.Configuration;
 using System.Data.OleDb;
 using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 using DevExpress.Xpf.Printing;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
@@ -84,11 +83,29 @@ namespace PALBBR.ViewModel
 
         private void PrintXtraReport()
         {
-            var xtraReport = new XtraReport1();
+            var report = new TestReport();
+            report.Created = DateTime.Now;
+            report.CustomerNumber = CustomerNumber;
+
+            int index = 0;
+            int qty;
+            foreach (var item in Linens.Where(x => int.TryParse(x.Qty, out qty) && qty > 0))
+            {
+                report.Items.Add(new TestReportItem
+                {
+                    Index = ++index,
+                    Name = item.Name,
+                    Quantity = int.Parse(item.Qty)
+                });
+            }
+
+            var xtraReport = new TestXtraReport();
+            xtraReport.Initialize(report);
 
             var window = new DocumentPreviewWindow { WindowStartupLocation = WindowStartupLocation.CenterScreen };
             window.PreviewControl.DocumentSource = xtraReport;
             xtraReport.CreateDocument(true);
+ 
             window.ShowDialog();
         }
 
