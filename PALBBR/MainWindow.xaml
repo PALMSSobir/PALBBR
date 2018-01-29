@@ -76,7 +76,7 @@
                                       MaskType="Numeric"
                                       Mask="d"
                                       FontSize="20"
-                                      Value="{Binding Qty}"
+                                      EditValue="{Binding Qty}"
                                       HorizontalContentAlignment="Center"
                                       MaskUseAsDisplayFormat="True"/>
                             <!--<Button 

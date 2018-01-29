@@ -6,9 +6,11 @@ using System.Data.OleDb;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using DevExpress.Xpf.Printing;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using PALBBR.Data;
+using PALBBR.Reports;
 
 
 namespace PALBBR.ViewModel
@@ -51,7 +53,8 @@ namespace PALBBR.ViewModel
         {
             NumberCommand = new RelayCommand<object>(x => AddNumber(x));
             DeleteCommand = new RelayCommand<object>(x => DeleteNumber());
-            PrintCommand = new RelayCommand<LinenList>(x=> PrintBill());
+            //PrintCommand = new RelayCommand<LinenList>(x=> PrintBill());
+            PrintCommand = new RelayCommand<LinenList>(x=> PrintXtraReport());
 
             List<LinenList> items = new List<LinenList>();
 
@@ -78,7 +81,17 @@ namespace PALBBR.ViewModel
             Linens = new ObservableCollection<LinenList>(items);
         }
 
-        
+
+        private void PrintXtraReport()
+        {
+            var xtraReport = new XtraReport1();
+
+            var window = new DocumentPreviewWindow { WindowStartupLocation = WindowStartupLocation.CenterScreen };
+            window.PreviewControl.DocumentSource = xtraReport;
+            xtraReport.CreateDocument(true);
+            window.ShowDialog();
+        }
+
         private void PrintBill()
         {
             Conn = new OleDbConnection();
@@ -94,18 +107,37 @@ namespace PALBBR.ViewModel
             command.CommandText = query;
             MessageBox.Show("Data Saved "+ CustomerNumber);
             command.ExecuteNonQuery();
+            Conn.Close();
 
+            SaveItem(newId);
+        }
+
+        public void SaveItem(Guid newId)
+        {
+
+            Conn = new OleDbConnection();
+            Conn.ConnectionString = ConfigurationManager.ConnectionStrings["Conection"].ToString();
+
+            Conn.Open();
+            OleDbCommand command = new OleDbCommand();
+            command.Connection = Conn;
             int qty;
-
+            string a1 = "544";
             foreach (var item in Linens.Where(x => int.TryParse(x.Qty, out qty) && qty > 0))
             {
 
-                string query2 = "Insert Into Transaction (ID, LinenId, Quantity) Values('" + newId + "','" + item.Id + "','" + item.Qty + "')";
+                string query2 = "Insert Into Transactions (DeliveryId, LinenId, Qty) Values('" + newId + "','" + item.Id + "','" + item.Qty + "')";
+                //string query2 = "Insert Into Transaction (ID, LinenId, Quantity) Values('" + a1 + "','" + a1 + "','" + a1 + "')";
+                //string query2 = "Insert Into Transaction (ID, LinenId, Quantity) Values('5','5','6')";
+                //string query2 = "Insert Into DeliveryNotes (PrintDate, Client, DeliveryId) Values('" + DateTime.Now + "','" + CustomerNumber + "','" + item.Qty + "')";
                 command.CommandText = query2;
                 command.ExecuteNonQuery();
             }
 
-            Conn.Close();
+        }
+
+        public void PrintReceipe()
+        {
         }
 
 
