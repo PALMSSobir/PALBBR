@@ -201,7 +201,7 @@
             this.xrTable2.Name = "xrTable2";
             this.xrTable2.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow3});
-            this.xrTable2.SizeF = new System.Drawing.SizeF(275F, 25F);
+            this.xrTable2.SizeF = new System.Drawing.SizeF(265F, 25F);
             // 
             // xrTableRow3
             // 
@@ -252,7 +252,7 @@
             this.ComponentStorage.AddRange(new System.ComponentModel.IComponent[] {
             this.objectDataSource1});
             this.DataSource = this.objectDataSource1;
-            this.Margins = new System.Drawing.Printing.Margins(10, 10, 10, 10);
+            this.Margins = new System.Drawing.Printing.Margins(20, 10, 10, 10);
             this.PageHeight = 400;
             this.PageWidth = 295;
             this.PaperKind = System.Drawing.Printing.PaperKind.Custom;
