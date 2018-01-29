@@ -100,11 +100,10 @@ namespace PALBBR.ViewModel
             foreach (var item in Linens.Where(x => int.TryParse(x.Qty, out qty) && qty > 0))
             {
 
-                string query2 = "Insert Into Transaction (ID, LinenId, Quantity) Values('77','88','99')";
-                //string query2 = "Insert Into Transaction (ID, LinenId, Quantity) Values('" + newId + "','" + item.Id + "','" + item.Qty + "')";
+                string query2 = "Insert Into Transaction (ID, LinenId, Quantity) Values('" + newId + "','" + item.Id + "','" + item.Qty + "')";
                 command.CommandText = query2;
+                command.ExecuteNonQuery();
             }
-            command.ExecuteNonQuery();
 
             Conn.Close();
         }
