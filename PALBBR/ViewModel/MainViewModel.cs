@@ -130,21 +130,21 @@ namespace PALBBR.ViewModel
             var xtraReport = new TestXtraReport();
             xtraReport.Initialize(report);
 
-            //using (ReportPrintTool printTool = new ReportPrintTool(xtraReport))
-            //{
-            //    printTool.Print();
-            //    //or printTool.PrintDialog();
-            //}
+            xtraReport.PrintingSystem.StartPrint += new DevExpress.XtraPrinting.PrintDocumentEventHandler(PrintingSystem_StartPrint);
+            xtraReport.Print();
 
-            //return;
+            return;
 
             var window = new DocumentPreviewWindow { WindowStartupLocation = WindowStartupLocation.CenterScreen };
             window.PreviewControl.DocumentSource = xtraReport;
             xtraReport.CreateDocument(true);
 
-            window.PreviewControl.Print();
-
             window.ShowDialog();
+        }
+
+        private void PrintingSystem_StartPrint(object sender, DevExpress.XtraPrinting.PrintDocumentEventArgs e)
+        {
+            e.PrintDocument.PrinterSettings.Copies = 3;
         }
 
         private Guid SaveBill()
