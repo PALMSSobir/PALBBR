@@ -10,6 +10,7 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using PALBBR.Data;
 using PALBBR.Reports;
+using DevExpress.XtraReports.UI;
 
 
 namespace PALBBR.ViewModel
@@ -27,16 +28,19 @@ namespace PALBBR.ViewModel
             get => _customerNumber;
             set => Set(ref _customerNumber, value);
         }
+
         public LinenList SelectedItem
         {
             get => _selectedItem;
             set => Set(ref _selectedItem, value);
         }
+
         public ObservableCollection<LinenList> Linens
         {
             get => _linens;
             set => Set(ref _linens, value);
         }
+
         public DeliveryNotes DeliveryNotes
         {
             get => _deliveryNotes;
@@ -52,8 +56,8 @@ namespace PALBBR.ViewModel
         {
             NumberCommand = new RelayCommand<object>(x => AddNumber(x));
             DeleteCommand = new RelayCommand<object>(x => DeleteNumber());
-            //PrintCommand = new RelayCommand<LinenList>(x=> PrintBill());
-            PrintCommand = new RelayCommand<LinenList>(x=> PrintXtraReport());
+            //PrintCommand = new RelayCommand<LinenList>(x=> SaveBill());
+            PrintCommand = new RelayCommand<LinenList>(x => Print());
 
             List<LinenList> items = new List<LinenList>();
 
@@ -73,19 +77,43 @@ namespace PALBBR.ViewModel
             {
                 item.Name = reader["LinenName"].ToString();
                 item.Id = reader["ID"].ToString();
-                items.Add(new LinenList(){Id = item.Id, Name = item.Name, Qty = item.Qty});
+                items.Add(new LinenList() {Id = item.Id, Name = item.Name, Qty = item.Qty});
             }
 
             Conn.Close();
             Linens = new ObservableCollection<LinenList>(items);
         }
 
+        private void Print()
+        {
+            var guid = SaveBill();
 
-        private void PrintXtraReport()
+            var id = GetBillId(guid.ToString());
+
+            PrintXtraReport(id);
+        }
+
+        private string GetBillId(string guid)
+        {
+            var conn = new OleDbConnection();
+            conn.ConnectionString = ConfigurationManager.ConnectionStrings["Conection"].ToString();
+            conn.Open();
+            OleDbCommand command = new OleDbCommand();
+            command.Connection = conn;
+            string query = $"Select * From DeliveryNotes Where DeliveryID = '{guid}'";
+            command.CommandText = query;
+            OleDbDataReader reader = command.ExecuteReader();
+            reader.Read();
+
+            return reader["ID"].ToString();
+        }
+
+        private void PrintXtraReport(string billNumber)
         {
             var report = new TestReport();
             report.Created = DateTime.Now;
             report.CustomerNumber = CustomerNumber;
+            report.BillNumber = billNumber;
 
             int index = 0;
             int qty;
@@ -102,14 +130,24 @@ namespace PALBBR.ViewModel
             var xtraReport = new TestXtraReport();
             xtraReport.Initialize(report);
 
+            //using (ReportPrintTool printTool = new ReportPrintTool(xtraReport))
+            //{
+            //    printTool.Print();
+            //    //or printTool.PrintDialog();
+            //}
+
+            //return;
+
             var window = new DocumentPreviewWindow { WindowStartupLocation = WindowStartupLocation.CenterScreen };
             window.PreviewControl.DocumentSource = xtraReport;
             xtraReport.CreateDocument(true);
- 
+
+            window.PreviewControl.Print();
+
             window.ShowDialog();
         }
 
-        private void PrintBill()
+        private Guid SaveBill()
         {
             Conn = new OleDbConnection();
             Conn.ConnectionString = ConfigurationManager.ConnectionStrings["Conection"].ToString();
@@ -122,11 +160,13 @@ namespace PALBBR.ViewModel
 
             string query = "INSERT INTO DeliveryNotes (Client, PrintDate, DeliveryID) VALUES('" + CustomerNumber + "','" + DateTime.Now + "', '" + newId + "' )";
             command.CommandText = query;
-            MessageBox.Show("Data Saved "+ CustomerNumber);
-            command.ExecuteNonQuery();
+            //MessageBox.Show("Data Saved "+ CustomerNumber);
+            var result = command.ExecuteScalar();
             Conn.Close();
 
             SaveItem(newId);
+
+            return newId;
         }
 
         public void SaveItem(Guid newId)
@@ -151,6 +191,7 @@ namespace PALBBR.ViewModel
                 command.ExecuteNonQuery();
             }
 
+            Conn.Close();
         }
 
         public void PrintReceipe()

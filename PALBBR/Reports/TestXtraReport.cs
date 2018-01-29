@@ -22,6 +22,7 @@ namespace PALBBR.Reports
     public class TestReport
     {
         public string CustomerNumber { get; set; }
+        public string BillNumber { get; set; }
         public DateTime Created { get; set; }
         public List<TestReportItem> Items { get; set; }
 
