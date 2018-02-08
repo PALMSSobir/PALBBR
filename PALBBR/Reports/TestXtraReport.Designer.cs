@@ -61,6 +61,7 @@
             // 
             // Detail
             // 
+            this.Detail.Expanded = false;
             this.Detail.HeightF = 0F;
             this.Detail.Name = "Detail";
             this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
@@ -175,7 +176,7 @@
             this.xrPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("xrPictureBox1.Image")));
             this.xrPictureBox1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
             this.xrPictureBox1.Name = "xrPictureBox1";
-            this.xrPictureBox1.SizeF = new System.Drawing.SizeF(200F, 46F);
+            this.xrPictureBox1.SizeF = new System.Drawing.SizeF(236.3095F, 46F);
             this.xrPictureBox1.Sizing = DevExpress.XtraPrinting.ImageSizeMode.StretchImage;
             // 
             // DetailReport
@@ -201,7 +202,7 @@
             this.xrTable2.Name = "xrTable2";
             this.xrTable2.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow3});
-            this.xrTable2.SizeF = new System.Drawing.SizeF(265F, 25F);
+            this.xrTable2.SizeF = new System.Drawing.SizeF(236.3095F, 25F);
             // 
             // xrTableRow3
             // 
@@ -226,7 +227,7 @@
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Name]")});
             this.xrTableCell6.Name = "xrTableCell6";
             this.xrTableCell6.Text = "xrTableCell6";
-            this.xrTableCell6.Weight = 1.577380828857422D;
+            this.xrTableCell6.Weight = 1.2353996679917823D;
             // 
             // xrTableCell7
             // 
@@ -234,7 +235,7 @@
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Quantity]")});
             this.xrTableCell7.Name = "xrTableCell7";
             this.xrTableCell7.Text = "xrTableCell7";
-            this.xrTableCell7.Weight = 1D;
+            this.xrTableCell7.Weight = 1.0171829799436174D;
             // 
             // ReportFooter
             // 
@@ -252,7 +253,7 @@
             this.ComponentStorage.AddRange(new System.ComponentModel.IComponent[] {
             this.objectDataSource1});
             this.DataSource = this.objectDataSource1;
-            this.Margins = new System.Drawing.Printing.Margins(20, 10, 10, 10);
+            this.Margins = new System.Drawing.Printing.Margins(29, 29, 10, 10);
             this.PageHeight = 400;
             this.PageWidth = 295;
             this.PaperKind = System.Drawing.Printing.PaperKind.Custom;

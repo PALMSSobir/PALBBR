@@ -132,6 +132,8 @@ namespace PALBBR.ViewModel
 
             xtraReport.PrintingSystem.StartPrint += new DevExpress.XtraPrinting.PrintDocumentEventHandler(PrintingSystem_StartPrint);
             xtraReport.Print();
+            xtraReport.Print();
+            xtraReport.Print();
 
             return;
 
@@ -194,11 +196,6 @@ namespace PALBBR.ViewModel
             Conn.Close();
         }
 
-        public void PrintReceipe()
-        {
-        }
-
-
         private void AddNumber(object x)
         {
             if(SelectedItem != null)
@@ -223,6 +220,7 @@ namespace PALBBR.ViewModel
                 if (CustomerNumber == null) return;
                 CustomerNumber = null;
             }
+
         }
     }
 }
